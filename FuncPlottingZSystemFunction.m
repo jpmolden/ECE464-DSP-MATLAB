@@ -32,8 +32,10 @@ function [  ] = FuncPlottingZSystemFunction(HowManyNumeratorTerms, varargin )
             Denom = conv(Denom, varargin{n});
             %disp(Denom);
     end
-    disp(Numer)
-    disp(Denom)
+    
+    h = tf(Numer, Denom,-1,'variable','z^-1')
+    %disp(Numer)
+    %disp(Denom)
     %celldisp(varargin);
 
 %Group Delay, Freq Resp
