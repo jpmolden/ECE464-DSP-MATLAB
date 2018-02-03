@@ -9,7 +9,7 @@ function [  ] = FuncPlottingZSystemFunction(HowManyNumeratorTerms, varargin )
 %       (1 -1.5z^ -1z^-2)(1 0.9z^-1),
 %
 %       the remaining terms are assumed to be in the form
-%       (1 +0.7jz^-1)(1 -0.7jz^-1)
+%       (1 +0.7jz^-1)(1 -0.7jz^-1).
 %
 %   This function takes a variable number of input args representing a H(z)
 %   system
