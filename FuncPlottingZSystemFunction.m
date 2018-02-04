@@ -14,8 +14,7 @@ function [  ] = FuncPlottingZSystemFunction(HowManyNumeratorTerms, varargin )
 %   This function takes a variable number of input args representing a H(z)
 %   system
 %
-%   John-Paul Molden - Oregon State University
-
+%   John-Paul Molden ECE464/564: Digital Signal Processing - Oregon State University
 
     Numer = [1];
     Denom = [1];
@@ -34,8 +33,8 @@ function [  ] = FuncPlottingZSystemFunction(HowManyNumeratorTerms, varargin )
     end
     
     h = tf(Numer, Denom,-1,'variable','z^-1')
-    %disp(Numer)
-    %disp(Denom)
+    disp(Numer);
+    disp(Denom);
     %celldisp(varargin);
 
 %Group Delay, Freq Resp
@@ -54,11 +53,11 @@ plot(w,20*log10(abs(h)))
     title('H(e^{j\omega}) dB Magnitude Response')
     ax = gca;
     ax.XLim = [-pi pi];
-    ax.YLim = [-40 40];
+    %ax.YLim = [-40 40];
     ylabel('Magnitude (dB)')
     xlabel('Radian Frequency \omega')
     set(gca,'XTick',-pi:pi/2:pi) 
-    set(gca,'XTickLabel',{'-\pi','-\pi/2','0','\pi/2','pi'}) 
+    set(gca,'XTickLabel',{'-\pi','-\pi/2','0','\pi/2','\pi'}) 
 
 subplot(2,2,2)
 plot(w,gd)
@@ -68,7 +67,7 @@ plot(w,gd)
     ylabel('Samples')
     xlabel('Radian Frequency \omega')
     set(gca,'XTick',-pi:pi/2:pi) 
-    set(gca,'XTickLabel',{'-\pi','-\pi/2','0','\pi/2','pi'}) 
+    set(gca,'XTickLabel',{'-\pi','-\pi/2','0','\pi/2','\pi'}) 
 
 subplot(2,2,3)
     zplane(Numer,Denom)
