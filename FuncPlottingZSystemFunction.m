@@ -1,10 +1,10 @@
-function [  ] = FuncPlottingZSystemFunction(HowManyNumeratorTerms, varargin )
+function [  ] = FuncPlottingZSystemFunction(varargin )
 %FuncPlottingZSystemFunction Plots the freq response, group delay and pole
 %   zero plot for a H(z) system function
 %
-%   Input in the form (numberOfNumeratorTerms, [num 1],...,[numN], [den1],...,[denN]) 
+%   Input in the form ([num 1],...,[numN],'/', [den1],...,[denN]) 
 %
-%   Example: FuncPlottingZSystemFunction(2,[1 -1.5 -1],[1 0.9],[1 -1], [1 +0.7j], [1 -0.7j])
+%   Example: FuncPlottingZSystemFunction([1 -1.5 -1],[1 0.9],'/',[1 -1], [1 +0.7j], [1 -0.7j])
 %       This input will assume 2 numerator terms of the form:
 %       (1 -1.5z^ -1z^-2)(1 0.9z^-1),
 %
@@ -14,26 +14,32 @@ function [  ] = FuncPlottingZSystemFunction(HowManyNumeratorTerms, varargin )
 %   This function takes a variable number of input args representing a H(z)
 %   system
 %
-%   John-Paul Molden ECE464/564: Digital Signal Processing - Oregon State University
+%   John-Paul Molden ECE464/564: Digital Signal Processing - Oregon State University   
+    
+    HowManyNumeratorTerms = 0;
+    for n = 1:size(varargin,2)
+            if varargin{n} == '/'
+                HowManyNumeratorTerms = n-1;
+                display(HowManyNumeratorTerms)
+            end
+    end
 
     Numer = [1];
     Denom = [1];
-    n = 0;
     
     % Uses conv to create the polynomial numerator form
-    % Eg (1 +4z^-1)(1 +2z^-1) ==> (1 +6z^-1 +8z^-2)
-    while n < HowManyNumeratorTerms  
-            n = n + 1;
-            Numer = conv(Numer, varargin{n});
+    for n = 1:HowManyNumeratorTerms
+               
+        Numer = conv(Numer, varargin{n});
     end
-   
-    % Uses conv to create the polynomial denominator form
-    % Eg (1 +4z^-1)(1 +2z^-1) ==> (1 +6z^-1 +8z^-2)
-    while n < size(varargin,2) 
-            n = n + 1;
-            Denom = conv(Denom, varargin{n});
-            %disp(Denom);
+    
+    
+    for n = (HowManyNumeratorTerms + 2):size(varargin,2)
+                
+        Denom = conv(Denom, varargin{n});
     end
+    
+    
     
     % Displays the transfer function
     h = tf(Numer, Denom,-1,'variable','z^-1')
