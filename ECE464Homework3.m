@@ -64,3 +64,19 @@ fh = figure('NumberTitle', 'off', 'Name', 'Problem 4');
 FuncPlottingZSystemFunction([1 -1],[1 2],'/',[1 -0.8*exp(j*pi/4)], [1 -0.8*exp(-j*pi/4)])
     h=get(fh,'children');
     h(4).YLim = [-40 20]; %Sets the subplot for magnitude to a sensable range to avoid quantization noise.
+
+%% Problem 5
+clear;
+
+fh = figure('NumberTitle', 'off', 'Name', 'Problem 5.1');
+FuncPlottingZSystemFunction([1 -(1/0.5)],'/',[1])
+    h=get(fh,'children');
+    h(4).YLim = [-40 20]; %Sets the subplot for magnitude to a sensable range to avoid quantization noise.
+
+fh = figure('NumberTitle', 'off', 'Name', 'Problem 5.2');
+FuncPlottingZSystemFunction([1],'/',[1 -(1/0.5)])
+    h=get(fh,'children');
+    h(4).YLim = [-40 20]; %Sets the subplot for magnitude to a sensable range to avoid quantization noise.
+
+
+    

@@ -1,3 +1,5 @@
+% John-Paul Molden ECE464/564: Digital Signal Processing - Oregon State University   
+
 function [  ] = FuncPlottingZSystemFunction(varargin )
 %FuncPlottingZSystemFunction Plots the freq response, group delay and pole
 %   zero plot for a H(z) system function
@@ -16,6 +18,14 @@ function [  ] = FuncPlottingZSystemFunction(varargin )
 %
 %   John-Paul Molden ECE464/564: Digital Signal Processing - Oregon State University   
     
+v = size(varargin,2)
+
+if size(varargin,2) < 2
+    display('This function needs a min of 3 inputs eg [1 -2],'/',[2 4]')
+    return
+end
+
+
     HowManyNumeratorTerms = 0;
     for n = 1:size(varargin,2)
             if varargin{n} == '/'
