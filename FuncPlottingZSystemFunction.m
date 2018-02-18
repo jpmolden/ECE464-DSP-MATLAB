@@ -1,5 +1,3 @@
-% John-Paul Molden ECE464/564: Digital Signal Processing - Oregon State University   
-
 function [  ] = FuncPlottingZSystemFunction(varargin )
 %FuncPlottingZSystemFunction Plots the freq response, group delay and pole
 %   zero plot for a H(z) system function
@@ -50,7 +48,8 @@ end
     end
     
     
-    
+    Numer
+    Denom
     % Displays the transfer function
     h = tf(Numer, Denom,-1,'variable','z^-1')
     
@@ -58,6 +57,7 @@ end
     w = linspace(-pi,pi,10000); %Create radian frequency vector with 10000 evenly spaced points
     [h,w] = freqz(Numer,Denom,w); %Calculate the frequency response
     gd = grpdelay(Numer,Denom,w); %Calculate group delay response
+    
     phi = phasez(Numer,Denom,w);  %Calculate the phase response
 
 
@@ -96,7 +96,7 @@ subplot(2,2,3)
 
 subplot(2,2,4)
     plot(w,phi)
-        title('\angleH(e^{j\omega}) Unwrapped Phase Response')
+        title('\angleH(e^{j\omega}) Wrapped Phase Response')
         ax = gca;
         ax.XLim = [-pi pi];
         ylabel('Radians')
