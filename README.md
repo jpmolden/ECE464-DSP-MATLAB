@@ -1,4 +1,6 @@
-# ECE464-DSP-MATLAB
+# Oregon State ECE464 DSP-MATLAB
+
+Oregon State ECE464 DSP-MATLAB
 Code to Illustrate DSP concepts and designs
 
 Closely follows the MIT ocw signals & systems classes:
