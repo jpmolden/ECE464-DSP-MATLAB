@@ -1,5 +1,13 @@
 function [ h,w ] = FuncCreatewindow(M,windowType)
-%  w=ones(M+1,1)'; %%% replace this with the actual window
+%FuncCreatewindow Applies a window to the function h
+%   TODO: Description
+%   
+%
+%    
+%
+%   
+%
+%   John-Paul Molden ECE464/564: Digital Signal Processing - Oregon State University   
 
 
 %M=92; %%Some random number for order chosen. Need to replace this to meet the Spec for each window
